@@ -10,7 +10,7 @@ FONT_FILE = os.path.join(ASSETS_FOLDER, "Alloy_curses_12x12.png")
 class ExampleState:
     player_x : int
     player_y : int
-    def __init__(self, x, y) :
+    def __init__(self, x : int, y : int) :
         self.player_x = x
         self.player_y = y
 
@@ -29,7 +29,8 @@ class ExampleState:
                 self.player_y -= 1
             case libtcod.event.KeyDown(sym = libtcod.event.KeySym.DOWN) :
                 self.player_y += 1
-
+            case _ :
+                pass
 
 def main() -> None :
     screen_width = 80
