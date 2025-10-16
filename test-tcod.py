@@ -1,11 +1,6 @@
 from __future__ import annotations
 
-import sys
-import os
-
-#os.environ["path"] = os.path.dirname(sys.executable) + ";" + os.environ["path"]
-
-import glob
+import os.path
 
 import tcod as libtcod
 
@@ -22,7 +17,18 @@ class ExampleState:
     def on_draw(self, console : libtcod.console.Console) -> None :
         console.print(self.player_x, self.player_y, "@")
 
-
+    def on_event(self, event : libtcod.event.Event) -> None :
+        match event:
+            case libtcod.event.Quit() :
+                raise SystemExit
+            case libtcod.event.KeyDown(sym = libtcod.event.KeySym.LEFT) :
+                self.player_x -= 1
+            case libtcod.event.KeyDown(sym = libtcod.event.KeySym.RIGHT) :
+                self.player_x += 1
+            case libtcod.event.KeyDown(sym = libtcod.event.KeySym.UP) :
+                self.player_y -= 1
+            case libtcod.event.KeyDown(sym = libtcod.event.KeySym.DOWN) :
+                self.player_y += 1
 
 
 def main() -> None :
@@ -42,8 +48,7 @@ def main() -> None :
             context.present(console)
             for event in libtcod.event.wait() :
                 print(event)
-                if isinstance(event, libtcod.event.Quit) :
-                    raise SystemExit
+                state.on_event(event)
     
 
         
