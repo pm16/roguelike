@@ -6,6 +6,8 @@ import tcod as libtcod
 
 from ExampleState import ExampleState
 
+from MainMenu import MainMenu
+
 from StateMachine import StateMachine
 
 def main() -> None :
@@ -20,10 +22,9 @@ def main() -> None :
     console = libtcod.console.Console(screen_width, screen_height)
     
 
-    state = ExampleState(x = console.width // 2, y = console.height // 2)
+    #state = ExampleState(x = console.width // 2, y = console.height // 2)
+    state = MainMenu() 
     STATE_MACHINE = StateMachine(state)
-    
-
 
     with libtcod.context.new(tileset = tileset) as context :
         while True :
@@ -33,8 +34,6 @@ def main() -> None :
             for event in libtcod.event.wait() :
                 print(event)
                 STATE_MACHINE.on_event(event)
-    
-
         
 if __name__ == "__main__" :
     main()
