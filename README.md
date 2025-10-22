@@ -19,5 +19,5 @@ pip install tcod
 python main.py
 ```
 # TODO
--- everything
--- package this better
+- everything
+- package this better

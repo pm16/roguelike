@@ -7,9 +7,11 @@ class ExampleState(State):
     player_x : int
     player_y : int
     
-    def __init__(self, x : int, y : int) :
-        self.player_x = x
-        self.player_y = y
+    def __init__(self, game, name) :
+        self.name = name
+        self.GAME = game
+        self.player_x = 20
+        self.player_y = 20
 
     def on_draw(self, console : libtcod.console.Console) -> None :
         console.print(self.player_x, self.player_y, "@")
@@ -26,5 +28,7 @@ class ExampleState(State):
                 self.player_y -= 1
             case libtcod.event.KeyDown(sym = libtcod.event.KeySym.DOWN) :
                 self.player_y += 1
+            case libtcod.event.KeyDown(sym = libtcod.event.KeySym.ESCAPE) :
+                self.GAME.STATE_MACHINE.pop()
             case _ :
                 pass

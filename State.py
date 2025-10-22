@@ -2,7 +2,11 @@ import tcod as libtcod
 
 class State:
     name : str
+    GAME : object
 
+    def __init__(self, game, name) :
+        self.name = name
+        self.GAME = game
     def on_draw(self, console : libtcod.console.Console) -> None :
         pass
 

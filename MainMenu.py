@@ -1,5 +1,7 @@
 from State import State
 from Menu import Menu
+from ExampleState import ExampleState
+
 import tcod as libtcod
 
 class MainMenu(State) :
@@ -20,9 +22,21 @@ class MainMenu(State) :
             case libtcod.event.KeyDown(sym = libtcod.event.KeySym.DOWN) :
                 self.menu.cursor_down()
             case libtcod.event.KeyDown(sym = libtcod.event.KeySym.RETURN) :
-                pass
+                self.option(self.menu.select())
             case _ :
                 pass
 
     def on_draw(self, console : libtcod.console.Console) ->None :
         self.menu.draw(console)
+
+    def option(self, choice : str) :
+        match choice :
+            case "Quit" : 
+                raise SystemExit
+            case "Options" :
+                pass
+            case "Start" :
+                self.GAME.STATE_MACHINE.push(self.GAME.STATES["Example State"])
+                pass
+            case _ :
+                pass

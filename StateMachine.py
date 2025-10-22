@@ -4,8 +4,8 @@ import tcod as libtcod
 class StateMachine:
     stack = [State]
 
-    def __init__(self, state : State) :
-        self.stack.append(state)
+    def __init__(self) :
+        self.stack.clear()
 
     def pop(self) -> None :
         self.stack.pop()
