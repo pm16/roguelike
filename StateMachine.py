@@ -22,5 +22,5 @@ class StateMachine:
     def on_event(self, event : libtcod.event.Event) -> None :
         self.stack[len(self.stack) -1].on_event(event)
 
-    def on_update(self, dt : float) -> None :
-        self.stack[len(self.stack) -1].on_update(dt)
+    def on_update(self) -> None :
+        self.stack[len(self.stack) -1].on_update()
