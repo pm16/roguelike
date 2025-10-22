@@ -10,8 +10,8 @@ class ExampleState(State):
     def __init__(self, game, name) :
         self.name = name
         self.GAME = game
-        self.player_x = 20
-        self.player_y = 20
+        self.player_x = self.GAME.SCREEN_WIDTH // 2
+        self.player_y = self.GAME.SCREEN_HEIGHT // 2
 
     def on_draw(self, console : libtcod.console.Console) -> None :
         console.print(self.player_x, self.player_y, "@")

@@ -5,13 +5,16 @@ from ExampleState import ExampleState
 import tcod as libtcod
 
 class MainMenu(State) :
-    name = "Main Menu"
+    menu : Menu
+    
+    def __init__(self, game, name) :
+        self.name = name
+        self.GAME = game
+        self.menu = Menu(self.name, "*", self.GAME.SCREEN_WIDTH // 2, self.GAME.SCREEN_HEIGHT // 2)
 
-    menu = Menu(name, "*", 20, 20)
-
-    menu.items.append("Start")
-    menu.items.append("Options")
-    menu.items.append("Quit")
+        self.menu.items.append("Start")
+        self.menu.items.append("Options")
+        self.menu.items.append("Quit")
 
     def on_event(self, event : libtcod.event.Event) -> None :
         match event:
