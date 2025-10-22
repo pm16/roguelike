@@ -13,5 +13,5 @@ class State:
     def on_event(self, event : libtcod.event.Event) -> None :
         pass
 
-    def on_update(self, dt : float) -> None :
+    def on_update(self) -> None :
         pass 

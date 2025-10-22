@@ -4,10 +4,9 @@ from Game import Game
 
 def main() -> None :
     GAME = Game()
-    dt = 1
     with libtcod.context.new(tileset = GAME.TILESET) as context :
         while True :
-            GAME.STATE_MACHINE.on_update(dt)
+            GAME.STATE_MACHINE.on_update()
             GAME.CONSOLE.clear()
             GAME.STATE_MACHINE.on_draw(GAME.CONSOLE)
             context.present(GAME.CONSOLE, keep_aspect = True)
